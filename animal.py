@@ -1,5 +1,5 @@
 '''
-File: filename.py
+File: animal.py
 Description: A brief description of this Python module.
 Author: Billy Bizilis
 ID: 110100110
