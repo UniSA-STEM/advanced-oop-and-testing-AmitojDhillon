@@ -58,5 +58,45 @@ class Animal:
     def set_on_display(self, on_display):
         self.__on_display = on_display
 
+    def eat(self):
+        return f"{self.__name} eats {self.__diet}"
 
+    def sleep(self):
+        return f"{self.__name} is sleeping"
+
+    def make_sound(self):
+        return f"{self.__name} makes a sound"
+
+    def __str__(self):
+        display_status = "On display" if self.__on_display else "not on display"
+        return f"{self.__name} ({self.__species}, {self.__age} years) | {display_status})""
+
+
+class Healthissue:
+
+    def __init__(self, description, severity, treatment):
+        self.__description = description
+        self.__severity = severity
+        self.__treatment = treatment
+        self.__resolved = False
+        self.__notes = ""
+
+
+    def get_description(self):
+        return self.__description
+
+    def get_severity(self):
+        return self.__severity
+
+    def get_treatment(self):
+        return self.__treatment
+
+    def get_resolved(self):
+        return self.__resolved
+
+    def get_notes(self):
+        return self.__notes
+
+    def set_description(self, description):
+        self.__description = description
 
