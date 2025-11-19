@@ -97,6 +97,13 @@ class Healthissue:
     def get_notes(self):
         return self.__notes
 
-    def set_description(self, description):
-        self.__description = description
+    def mark_resolved(self, notes=""):
+        self.__resolved = True
+        self.__notes = notes
+
+    def __str__(self):
+        status = "resolved" if self.__resolved else "Active"
+        return f"[{status}] {self.__description} (Sverity: {self.__severity})"
+
+
 
