@@ -56,7 +56,28 @@ class Animal:
         self.__environment_type = environment_type
 
     def set_on_display(self, on_display):
+        if on_display and self.active_health_issues():
+            return
         self.__on_display = on_display
+
+    def add_health_issue(self, description, severity, treatment):
+        issue = HealthIssue(description, severity, treatment)
+        self.__health_issues.append(issue)
+        self.__on_display = False
+        return issue
+
+    def active_health_issues(self):
+        for issue in self.__health_issues:
+            if not issue.is_active():
+                return True
+            return False
+
+    def resolve_health_issue(self, index, notes=""):
+        if 0 <= index < len(self.__health_issues):
+            self.__health_issues[index].mark_resolved(notes)
+
+    def can_move(self):
+        return not self.active_health_issues()
 
     def eat(self):
         return f"{self.__name} eats {self.__diet}"
@@ -69,7 +90,8 @@ class Animal:
 
     def __str__(self):
         display_status = "On display" if self.__on_display else "not on display"
-        return f"{self.__name} ({self.__species}, {self.__age} years) | {display_status})""
+        health_status = "unwell" if self.__active_health_issues() else "healthy"
+        return f"{self.__name} ({self.__species}, {self.__age} years) | {display_status}, {health_status}"
 
 
 class Healthissue:
@@ -103,7 +125,24 @@ class Healthissue:
 
     def __str__(self):
         status = "resolved" if self.__resolved else "Active"
-        return f"[{status}] {self.__description} (Sverity: {self.__severity})"
+        return f"[{status}] {self.__description} (Severity: {self.__severity})"
+
+class Mammal(Animal):
+    def __init__(self, name, species, age, diet, environment_type):
+        super().__init__(name, species, age, diet, environment_type)
+        self.__category = "Mammal"
+
+    def get_category(self):
+        return self.__category
+
+    def make_sound(self):
+        return f"{self.__get_name()} makes a mammal sound"
+
+class Bird(Animal):
+    def __init__(self, name, species, age, diet, environment_type):
+        super().__init__(name, species, age, diet, environment_type)
+        self.__category = "Bird"
+
 
 
 
