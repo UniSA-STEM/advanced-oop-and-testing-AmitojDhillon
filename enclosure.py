@@ -76,7 +76,7 @@ class Enclosure:
             if self.is_full():
                 return
 
-            if not animal.can_move()
+            if not animal.can_move():
                 return
 
             self.__animals.append(animal)
