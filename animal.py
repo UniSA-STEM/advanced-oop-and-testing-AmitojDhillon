@@ -143,6 +143,19 @@ class Bird(Animal):
         super().__init__(name, species, age, diet, environment_type)
         self.__category = "Bird"
 
+    def get_category(self):
+        return self.__category
 
+    def make_sound(self):
+        return f"{self.__get_name()} chirps"
 
+class Reptile(Animal):
+    def __init__(self, name, species, age, diet, environment_type):
+        super().__init__(name, species, age, diet, environment_type)
+        self.__category = "Reptile"
 
+    def get_category(self):
+        return self.__category
+
+    def make_sound(self):
+        return f"{self.__get_name()} hisses"
