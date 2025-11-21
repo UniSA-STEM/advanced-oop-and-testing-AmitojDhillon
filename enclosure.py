@@ -63,3 +63,46 @@ class Enclosure:
 
     def is_full(self):
         return len(self.__animals) >= self.__max_animals
+
+    def add_animal(self, animal):
+
+        if isinstance(animal, Animal):
+            if animal.get_species() != self.__allowed_species:
+                return
+
+            if animal.get_environment_type() != self.__environment_type:
+                return
+
+            if self.is_full():
+                return
+
+            if not animal.can_move()
+                return
+
+            self.__animals.append(animal)
+
+    def remove_animal(self, animal):
+        if animal in self.__animals:
+            self.__animals.remove(animal)
+
+    def clean(self):
+        self.__cleanliness = 0
+
+    def get_status(self):
+
+        if self.__animals:
+            names = ", ".join(a.get_name() for a in self.__animals)
+        else:
+            names = "No animals"
+
+        return(
+            f"Enclosure: {self.__name}"
+            f"Size: {self.__size} sqm"
+            f"Environment type: {self.__environment_type}"
+            f"cleanliness: {self.__cleanliness}"
+            f"Animals: {names}"
+        )
+
+    def __str__(self):
+        return self.get_status()
+
