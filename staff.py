@@ -37,4 +37,4 @@ class Staff:
         self.__role = role
 
     def __str__(self):
-        return f"{self.__name} {self.__role}"
+        return f"{self.__name} {self.__role}
