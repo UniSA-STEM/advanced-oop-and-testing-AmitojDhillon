@@ -72,4 +72,40 @@ class Zookeeper(Staff):
 
         return f"{self.__get_name()} | Enclosures: {names}"
 
-    .
+class Veterinarian(Staff):
+
+    def __init__(self, name, staff_id):
+        super().__init__(name, staff_id, "Veterinarian")
+        self.__animals = []
+
+    def get_animals(self):
+        return list(self.__animals)
+
+    def set_animals(self, animals):
+        self.__animals = animals
+
+    def record_health_issues(self, animal, description, severity, treatment):
+        if isinstance(animal, Animal):
+            issue = animal.add_health_issue(description, severity, treatment)
+
+            if animal not in self.__animals:
+                self.__animals.append(animal)
+
+            return f"{self.get_name()} added issued for {animal.__get_name()}: {issue.get_description()}"
+
+    def resolve_all_issues(self,animal, notes=""):
+        issues = animal.get_health_issues()
+        for i in range(len(issues)):
+            if not issues[i].get_resolved():
+                animal.resolve_health_issue(i, notes)
+
+        return f"{self.get_name()} resolved all issues for {animal.__get_name()}"
+
+    def get_summary(self):
+        if self.__animals:
+            names = ", ".join(a.get_name() for a in self.__animals)
+        else:
+            names = "None"
+
+        return f"{self.__get_name()} | Animals: {names}"
+
