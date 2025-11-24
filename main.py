@@ -13,51 +13,45 @@ from enclosure import Enclosure
 from staff import Zookeeper, Veterinarian
 
 
-def main():
+leo = Mammal("Leo", "Lion", 6, "meat", "savannah")
+zara = Mammal("Zara", "Lion", 3, "meat", "savannah")
+rio = Bird("Rio", "Parrot", 4, "seeds", "aviary")
+luna = Bird("Luna", "Parrot", 1, "seeds", "aviary")
+fang = Reptile("Fang", "Python", 9, "rodents", "rainforest")
+ember = Reptile("Ember", "Python", 5, "meat", "rainforest")
 
-    leo = Mammal("Leo", "Lion", 6, "meat", "savannah")
-    zara = Mammal("Zara", "Lion", 3, "meat", "savannah")
+all_animals = [leo, zara, rio, luna, fang, ember]
 
-    rio = Bird("Rio", "Parrot", 4, "seeds", "aviary")
-    luna = Bird("Luna", "Parrot", 1, "seeds", "aviary")
+print("Animals Created:")
+for a in all_animals:
+    print(" -", a)
+print()
 
-    fang = Reptile("Fang", "Python", 9, "rodents", "rainforest")
-    ember = Reptile("Ember", "Python", 5, "meat", "rainforest")
+savannah = Enclosure("Savannah Habitat", 500, "savannah", 3, "Lion")
+aviary = Enclosure("Aviary", 200, "aviary", 4, "Parrot")
+rainforest = Enclosure("Rainforest Exhibit", 300, "rainforest", 3, "Python")
 
-    all_animals = [leo, zara, rio, luna, fang, ember]
+enclosures = [savannah, aviary, rainforest]
 
-    print("Animals Created:")
-    for a in all_animals:
-        print(" -", a)
-    print()
+print("Enclosures Created:")
+for e in enclosures:
+    print(" -", e)
+print()
 
-    savannah = Enclosure("Savannah Habitat", 500, "savannah", 3, "Lion")
-    aviary = Enclosure("Aviary", 200, "aviary", 4, "Parrot")
-    rainforest = Enclosure("Rainforest Exhibit", 300, "rainforest", 3, "Python")
+savannah.add_animal(leo)
+savannah.add_animal(zara)
+aviary.add_animal(rio)
+aviary.add_animal(luna)
+rainforest.add_animal(fang)
+rainforest.add_animal(ember)
 
-    enclosures = [savannah, aviary, rainforest]
+print("Animals Added to Enclosures:")
+for e in enclosures:
+    print(" -", e)
+print()
 
-    print("Enclosures Created:")
-    for e in enclosures:
-        print(" -", e)
-    print()
+keeper = Zookeeper("Amy", "ZK001")
+vet = Veterinarian("Dr. Ben", "VT101")
 
-    savannah.add_animal(leo)
-    savannah.add_animal(zara)
-
-    aviary.add_animal(rio)
-    aviary.add_animal(luna)
-
-    rainforest.add_animal(fang)
-    rainforest.add_animal(ember)
-
-    print("Animals Added to Enclosures:")
-    for e in enclosures:
-        print(" -", e)
-    print()
-
-    keeper = Zookeeper("Amy", "ZK001")
-    vet = Veterinarian("Dr. Ben", "VT101")
-
-    for e in enclosures:
-        keeper.assign_enclosure(e)
+for e in enclosures:
+    keeper.assign_enclosure(e)
