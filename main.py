@@ -55,3 +55,68 @@ vet = Veterinarian("Dr. Ben", "VT101")
 
 for e in enclosures:
     keeper.assign_enclosure(e)
+
+print("Staff Members:")
+print(" -", keeper.get_summary())
+print(" -", vet.get_summary())
+print()
+
+print("Daily Feeding Routine:")
+print(" ->", keeper.feed_animal(leo))
+print(" ->", keeper.feed_animal(rio))
+print(" ->", keeper.feed_animal(fang))
+print()
+
+print("Cleaning Routine:")
+for e in enclosures:
+    print(" ->", keeper.clean_enclosure(e))
+print()
+
+print("Veterinarian Recording Health Issue:")
+vet.record_health_issue(leo, "Limping front leg", "Moderate", "Rest and medication")
+
+print("Leo Health Issues:")
+for issue in leo.get_health_issues():
+    print(" ->", issue)
+print()
+
+leo.set_on_display(True)
+print("Leo Display Status:", leo.get_on_display())
+print()
+
+print(vet.resolve_all_issues(leo, "Responded well to treatment"))
+print()
+
+leo.set_on_display(True)
+print("Leo Display Status After Recovery:", leo.get_on_display())
+print()
+
+savannah.remove_animal(zara)
+print("Zara Removed From Savannah Enclosure")
+print("Updated Savannah:", savannah)
+print()
+
+print("Animals by Species:")
+species_map = {}
+for animal in all_animals:
+    species_map.setdefault(animal.get_species(), []).append(animal.get_name())
+
+for species, names in species_map.items():
+    print(f" - {species}: {', '.join(names)}")
+print()
+
+print("Enclosure Reports:")
+for e in enclosures:
+    print(" -", e)
+print()
+
+print("Animal Health Reports:")
+for animal in all_animals:
+    print(f"{animal.get_name()}:", end=" ")
+    if animal.get_health_issues():
+        for issue in animal.get_health_issues():
+            print(issue)
+    else:
+        print("No health issues")
+print()
+
