@@ -84,7 +84,7 @@ class Veterinarian(Staff):
     def set_animals(self, animals):
         self.__animals = animals
 
-    def record_health_issues(self, animal, description, severity, treatment):
+    def record_health_issue(self, animal, description, severity, treatment):
         if isinstance(animal, Animal):
             issue = animal.add_health_issue(description, severity, treatment)
 
