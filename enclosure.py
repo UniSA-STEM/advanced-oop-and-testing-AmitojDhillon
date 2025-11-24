@@ -112,10 +112,10 @@ class Enclosure:
     resets cleanliness to 100.
     '''
     def clean(self):
-        self.__cleanliness = 0
+        self.__cleanliness = 100
     '''
     get_status: 
-    returns a readable summary of size, type, cleanliness, animals.
+    shows a readable summary of size, type, cleanliness, animals.
     '''
     def get_status(self):
 

@@ -116,7 +116,6 @@ class Animal:
     Shows a message showing the animal is sleeping.
     '''
 
-
     def sleep(self):
         return f"{self.__name} is sleeping"
 

@@ -93,7 +93,8 @@ class Zookeeper(Staff):
             return f"{self.get_name()} cleared {enclosure.get_name()}"
 
     '''
-    get_summary(): shows all enclosures this zookeeper manages.
+    get_summary: 
+    shows all enclosures this zookeeper manages.
     '''
     def get_summary(self):
         if self.__enclosures:
