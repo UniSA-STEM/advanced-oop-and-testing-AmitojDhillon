@@ -57,12 +57,12 @@ class Zookeeper(Staff):
 
     def feed_animal(self, animal):
         if isinstance(animal, Animal):
-            return f"{self.__get_name()} feed {animal.__get_name()}. {animal.eat()}"
+            return f"{self.get_name()} feed {animal.get_name()}. {animal.eat()}"
 
     def clean_enclosure(self, enclosure):
         if enclosure in self.__enclosures:
             enclosure.clean()
-            return f"{self.__get_name()} cleared {enclosure.get_name()}"
+            return f"{self.get_name()} cleared {enclosure.get_name()}"
 
     def get_summary(self):
         if self.__enclosures:
@@ -70,7 +70,7 @@ class Zookeeper(Staff):
         else:
             names = "None"
 
-        return f"{self.__get_name()} | Enclosures: {names}"
+        return f"{self.get_name()} | Enclosures: {names}"
 
 class Veterinarian(Staff):
 
@@ -91,7 +91,7 @@ class Veterinarian(Staff):
             if animal not in self.__animals:
                 self.__animals.append(animal)
 
-            return f"{self.get_name()} added issued for {animal.__get_name()}: {issue.get_description()}"
+            return f"{self.get_name()} added issued for {animal.get_name()}: {issue.get_description()}"
 
     def resolve_all_issues(self,animal, notes=""):
         issues = animal.get_health_issues()
@@ -99,7 +99,7 @@ class Veterinarian(Staff):
             if not issues[i].get_resolved():
                 animal.resolve_health_issue(i, notes)
 
-        return f"{self.get_name()} resolved all issues for {animal.__get_name()}"
+        return f"{self.get_name()} resolved all issues for {animal.get_name()}"
 
     def get_summary(self):
         if self.__animals:
@@ -107,5 +107,5 @@ class Veterinarian(Staff):
         else:
             names = "None"
 
-        return f"{self.__get_name()} | Animals: {names}"
+        return f"{self.get_name()} | Animals: {names}"
 

@@ -68,9 +68,9 @@ class Animal:
 
     def active_health_issues(self):
         for issue in self.__health_issues:
-            if not issue.is_active():
+            if not issue.get_resolved():
                 return True
-            return False
+        return False
 
     def resolve_health_issue(self, index, notes=""):
         if 0 <= index < len(self.__health_issues):
@@ -90,11 +90,11 @@ class Animal:
 
     def __str__(self):
         display_status = "On display" if self.__on_display else "not on display"
-        health_status = "unwell" if self.__active_health_issues() else "healthy"
+        health_status = "unwell" if self.active_health_issues() else "healthy"
         return f"{self.__name} ({self.__species}, {self.__age} years) | {display_status}, {health_status}"
 
 
-class Healthissue:
+class HealthIssue:
 
     def __init__(self, description, severity, treatment):
         self.__description = description
