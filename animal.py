@@ -1,8 +1,8 @@
 '''
 File: animal.py
-Description: A brief description of this Python module.
+Description: Provides attributes and behaviours for animals, as well as health tracking and category inheritance.
 Author: Amitoj Dhillon
-ID: 110100110
+ID: 110408872
 Username: Dhiay010
 This is my own work as defined by the University's Academic Integrity Policy.
 '''

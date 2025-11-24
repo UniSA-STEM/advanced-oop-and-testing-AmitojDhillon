@@ -1,8 +1,8 @@
 '''
-File: filename.py
-Description: A brief description of this Python module.
+File: staff.py
+Description: Contains the Staff base class along with Zookeeper and Veterinarian subclasses.
 Author: Amitoj Dhillon
-ID: 110100110
+ID: 110408872
 Username: Dhiay010
 This is my own work as defined by the University's Academic Integrity Policy.
 '''
