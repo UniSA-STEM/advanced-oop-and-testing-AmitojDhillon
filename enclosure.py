@@ -9,6 +9,11 @@ This is my own work as defined by the University's Academic Integrity Policy.
 
 from animal import Animal
 
+'''
+Enclosure class:
+- Attributes: name, size, environment type, allowed species, max animals, cleanliness, animals list.
+'''
+
 class Enclosure:
 
     def __init__(self, name, size, environment_type, max_animals, allowed_species):
@@ -19,7 +24,9 @@ class Enclosure:
         self.__allowed_species = allowed_species
         self.__cleanliness = 100
         self.__animals = []
-
+    '''
+    Getters
+    '''
 
     def get_name(self):
         return self.__name
@@ -42,6 +49,10 @@ class Enclosure:
     def get_animals(self):
         return list(self.__animals)
 
+    '''
+    Setters
+    '''
+
     def set_name(self, name):
         self.__name = name
 
@@ -60,10 +71,19 @@ class Enclosure:
     def set_cleanliness(self, cleanliness):
         self.__cleanlines = cleanliness
 
-
+    '''
+    is_full: 
+    checks if enclosure reached max capacity.
+    '''
     def is_full(self):
         return len(self.__animals) >= self.__max_animals
-
+    '''
+    add_animal: adds an animal ONLY if:
+        - species matches
+        - environment matches
+        - enclosure is not full
+        - animal is healthy
+    '''
     def add_animal(self, animal):
 
         if isinstance(animal, Animal):
@@ -80,14 +100,23 @@ class Enclosure:
                 return
 
             self.__animals.append(animal)
-
+    '''
+    remove_animal: 
+    removes an animal from the enclosure.
+    '''
     def remove_animal(self, animal):
         if animal in self.__animals:
             self.__animals.remove(animal)
-
+    '''
+    clean: 
+    resets cleanliness to 100.
+    '''
     def clean(self):
         self.__cleanliness = 0
-
+    '''
+    get_status: 
+    returns a readable summary of size, type, cleanliness, animals.
+    '''
     def get_status(self):
 
         if self.__animals:
